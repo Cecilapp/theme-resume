@@ -1,0 +1,95 @@
+{% extends '_default/page.html.twig' %}
+
+      {%- block sections ~%}
+
+      {#- contact ~#}
+      {%- if site.resume.contact|default ~%}
+      <section id="contact" class="row">
+        <aside class="col-sm-3">
+          <h3>{% trans %}Contact{% endtrans %}</h3>
+        </aside>
+        <div class="col-sm-9">
+          <div class="row">
+            <div class="col-sm-6">
+              <strong>{% trans %}Email{% endtrans %}</strong>
+              <div class="email"><a href="mailto: {{ site.resume.contact.email|default}}">{{ site.resume.contact.email|default}}</a></div>
+            </div>
+            <div class="col-sm-6">
+              <strong>{% trans %}Phone{% endtrans %}</strong>
+              <div class="phone"><a href="tel: {{ site.resume.contact.phone|default}}">{{ site.resume.contact.phone|default}}</a></div>
+            </div>
+            <div class="col-sm-6">
+              <strong>{% trans %}Website{% endtrans %}</strong>
+              <div class="website"><a href="{{ site.resume.contact.website|default}}">{{ site.resume.contact.website|default}}</a></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {%- endif ~%}
+      {#- about ~#}
+      <section id="about" class="row">
+        <aside class="col-sm-3">
+          <h3>{% trans %}About{% endtrans %}</h3>
+        </aside>
+        <div class="col-sm-9">
+          {{ page.content }}
+        </div>
+      </section>
+      {#- profiles ~#}
+      <section id="profiles" class="row">
+        <aside class="col-sm-3">
+          <h3>{% trans %}Profiles{% endtrans %}</h3>
+        </aside>
+        <div class="col-sm-9">
+          <div class="row">
+            {%- for profile in site.resume.profiles ~%}
+            <div class="col-sm-6">
+              <strong class="network">{{ profile.network }}</strong>
+              {%- if profile.username ~%}
+              <div class="username">
+                {%- if profile.url ~%}
+                <div class="url">
+                  <a href="{{ profile.url }}">{{ profile.username }}</a>
+                </div>
+                {%- else ~%}
+                {{ profile.username }}
+                {%- endif ~%}
+              </div>
+              {%- else ~%}
+                {%- if profile.url ~%}
+              <div class="url">
+                <a href="{{ profile.url }}">{{ profile.url }}</a>
+              </div>
+                {%- endif ~%}
+              {%- endif ~%}
+            </div>
+            {%- endfor ~%}
+          </div>
+        </div>
+      </section>
+      {#- works ~#}
+      <section id="work" class="row">
+        <aside class="col-sm-3">
+          <h3>{% trans %}Work{% endtrans %}</h3>
+        </aside>
+        <div class="col-sm-9">
+          <div class="row">
+            {%- for work in site.pages.showable|filter(page => page.section == 'works')|sort_by_date(variable='date_start') ~%}
+            <div class="col-sm-12">
+              <h4 class="strike-through">
+                <span><a href="{{ work.url }}">{{ work.company }}</a></span>
+                <span class="date">{{ work.start|format_date('medium') }} — {% if work.end|default %}{{ work.end|format_date('medium') }}{% else %}{{ 'Present'|trans }}{% endif %}</span>
+              </h4>
+              <div class="position">
+                {{ work.position }}
+              </div>
+              <div class="summary">
+                {{ work.content }}
+              </div>
+            </div>
+            {%- endfor ~%}
+          </div>
+        </div>
+      </section>
+
+      {%- endblock ~%}

@@ -1,0 +1,12 @@
+resume:
+  contact:
+    email: john@doe.tld
+    phone: +33 0 00 00 00 00
+    website: https://johndoe.tld
+  profiles:
+    - network: Twitter
+      username: johndoe
+      url: https://twitter.com/johndoe
+    - network: Github
+      username: JohnDoe
+      url: https://github.com/JohnDoe

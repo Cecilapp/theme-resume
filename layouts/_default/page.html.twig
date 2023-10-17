@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui" />
+    {%- include('partials/metatags.html.twig') ~%}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" />
+    {#-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" />~#}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/build.css" />
+    <style type="text/css">
+      {{ asset('css/styles.css')|inline }}
+    </style>
+  </head>
+  <body>
+    <header id="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-9 col-sm-push-3">
+            {%- if page.type != 'homepage' ~%}
+            <a href="{{ url('/') }}"><h1>{{ site.title}}</h1></a>
+            {%- else ~%}
+            <h1>{{ site.title }}</h1>
+            {%- endif ~%}
+            <h2>{{ site.baseline}}</h2>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="content" class="container">
+      {%- block sections ~%}
+      <section id="main" class="row">
+        {{ page.content }}
+      </section>
+      {%- endblock ~%}
+    </main>
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-9 col-sm-push-3">
+            {%- set powered_by -%}<a href="{{ cecil.url }}">Cecil</a>{%- endset ~%}
+            {%- set inspired_by -%}Flat{%- endset ~%}
+            {%- set inspired_from -%}<a href="https://github.com/erming/jsonresume-theme-flat/">Mattias Erming</a>{%- endset ~%}
+            {% trans %}Powered by %powered_by%{% endtrans %} — {% trans %}Inspired by the %inspired_by% theme from %inspired_from%{% endtrans %}
+          </div>
+        </div>
+      </div
+    </footer>
+  </body>
+</html>
