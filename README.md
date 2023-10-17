@@ -24,6 +24,9 @@ theme:
 Configuration:
 
 ```yaml
+title: John Doe
+baseline: Programmer
+description: John Doe, Full Stack Developer Ninja Expert.
 resume:
   contact:
     email: john@doe.tld
@@ -35,7 +38,7 @@ resume:
       url: https://github.com/JohnDoe
 ```
 
-Creates work experiences pages in `pages/works`:
+Creates _work experiences_ pages in `pages/works`:
 
 ```yaml
 ---
