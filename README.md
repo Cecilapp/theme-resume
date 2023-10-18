@@ -1,6 +1,6 @@
 # Resume theme
 
-The _Resume_ theme for [Cecil](https://cecil.app).
+The _Resume_ theme for [Cecil](https://cecil.app) (***WIP***).
 
 ![Demo screenshot](docs/screenshot.png)
 
