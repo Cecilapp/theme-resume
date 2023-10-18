@@ -47,7 +47,7 @@ position: "Job #1"
 url: https://company.tld
 start: 2015-01-01
 ---
-Job description
+Job description.
 ```
 
 ### Internationalization
