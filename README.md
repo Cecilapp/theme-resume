@@ -1,6 +1,6 @@
 # Resume theme
 
-The _Resume_ theme for [Cecil](https://cecil.app) (***WIP***).
+_Resume_ is a theme for creating professional resumes with [Cecil](https://cecil.app).
 
 ![Demo screenshot](docs/screenshot.png)
 
