@@ -5,12 +5,12 @@
   "keywords": ["Cecil", "theme", "Resume"],
   "license": "MIT",
   "require": {
-    "cecil/theme-installer": "^1.4"
+    "cecil/theme-installer": "^1.4||^2.0"
   },
   "extra": {
     "name": "resume",
     "branch-alias": {
-      "dev-master": "1.x-dev"
+      "dev-main": "1.x-dev"
     }
   },
   "minimum-stability": "dev",

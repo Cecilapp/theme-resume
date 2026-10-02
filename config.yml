@@ -1,12 +1,7 @@
+# Theme options
 resume:
   contact:
-    email: john@doe.tld
-    phone: +33 0 12 34 56 78
-    website: https://johndoe.tld
-  profiles:
-    - network: Twitter
-      username: johndoe
-      url: https://twitter.com/johndoe
-    - network: GitHub
-      username: JohnDoe
-      url: https://github.com/JohnDoe
+    email: ''
+    phone: ''
+    website: ''
+  profiles: []

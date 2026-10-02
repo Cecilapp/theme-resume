@@ -4,6 +4,13 @@ _Resume_ is a theme for creating professional resumes with [Cecil](https://cecil
 
 ![Demo screenshot](docs/screenshot.png)
 
+## Features
+
+- One page resume: contact, about, profiles and work experiences
+- Work experiences managed as pages, sorted by start date
+- Empty sections are hidden
+- Localization ready (english and french)
+
 ## Installation
 
 ```bash
@@ -14,41 +21,48 @@ composer require cecil/theme-resume
 
 ## Usage
 
-Add `resume` in the `theme` section of your `config.yml`:
+Add `resume` in the `theme` section of your configuration file:
 
 ```yaml
 theme:
   - resume
 ```
 
-Configuration:
+The homepage (`pages/index.md`) content is displayed in the _About_ section.
+
+### Configuration
 
 ```yaml
 title: John Doe
-baseline: Programmer
+baseline: Programmer # optional
 description: John Doe, Full Stack Developer Ninja Expert.
 resume:
-  contact:
+  contact: # each entry is optional
     email: john@doe.tld
     phone: +33 0 00 00 00 00
     website: https://johndoe.tld
   profiles:
-    - network: Github
-      username: JohnDoe
-      url: https://github.com/JohnDoe
+    - network: GitHub
+      username: JohnDoe # optional
+      url: https://github.com/JohnDoe # optional
 ```
 
-Creates _work experiences_ pages in `pages/works`:
+### Work experiences
+
+Create _work experiences_ pages in `pages/works/`:
 
 ```yaml
 ---
-company: Company
-position: "Job #1"
-url: https://company.tld
-start: 2015-01-01
+company: Company # optional, fallback to title
+position: "Job #1" # optional
+url: https://company.tld # optional
+start: 2015-01-01 # required
+end: 2016-01-01 # optional, "Present" if not set
 ---
 Job description.
 ```
+
+See the [`demo`](demo/) folder for a complete example.
 
 ### Internationalization
 
@@ -64,6 +78,6 @@ languages:
 
 ## License
 
- _Resume_ is a free software distributed under the terms of the MIT license.
+_Resume_ is a free software distributed under the terms of the MIT license.
 
 © [Arnaud Ligny](https://arnaudligny.fr)

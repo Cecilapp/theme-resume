@@ -3,25 +3,32 @@
       {%- block sections ~%}
 
       {#- contact ~#}
-      {%- if site.resume.contact|default ~%}
+      {%- set contact = site.resume.contact|default([]) ~%}
+      {%- if contact.email|default or contact.phone|default or contact.website|default ~%}
       <section id="contact" class="row">
         <aside class="col-sm-3">
           <h3>{% trans %}Contact{% endtrans %}</h3>
         </aside>
         <div class="col-sm-9">
           <div class="row">
+            {%- if contact.email|default ~%}
             <div class="col-sm-6">
               <strong>{% trans %}Email{% endtrans %}</strong>
-              <div class="email"><a href="mailto: {{ site.resume.contact.email|default}}">{{ site.resume.contact.email|default}}</a></div>
+              <div class="email"><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></div>
             </div>
+            {%- endif ~%}
+            {%- if contact.phone|default ~%}
             <div class="col-sm-6">
               <strong>{% trans %}Phone{% endtrans %}</strong>
-              <div class="phone"><a href="tel: {{ site.resume.contact.phone|default}}">{{ site.resume.contact.phone|default}}</a></div>
+              <div class="phone"><a href="tel:{{ contact.phone|replace({' ': '', '.': '', '-': ''}) }}">{{ contact.phone }}</a></div>
             </div>
+            {%- endif ~%}
+            {%- if contact.website|default ~%}
             <div class="col-sm-6">
               <strong>{% trans %}Website{% endtrans %}</strong>
-              <div class="website"><a href="{{ site.resume.contact.website|default}}">{{ site.resume.contact.website|default}}</a></div>
+              <div class="website"><a href="{{ contact.website }}">{{ contact.website }}</a></div>
             </div>
+            {%- endif ~%}
           </div>
         </div>
       </section>
@@ -36,6 +43,7 @@
         </div>
       </section>
       {#- profiles ~#}
+      {%- if site.resume.profiles|default([]) is not empty ~%}
       <section id="profiles" class="row">
         <aside class="col-sm-3">
           <h3>{% trans %}Profiles{% endtrans %}</h3>
@@ -44,10 +52,10 @@
           <div class="row">
             {%- for profile in site.resume.profiles ~%}
             <div class="col-sm-6">
-              <strong class="network">{{ profile.network }}</strong>
-              {%- if profile.username ~%}
+              <strong class="network">{{ profile.network|default }}</strong>
+              {%- if profile.username|default ~%}
               <div class="username">
-                {%- if profile.url ~%}
+                {%- if profile.url|default ~%}
                 <div class="url">
                   <a href="{{ profile.url }}">{{ profile.username }}</a>
                 </div>
@@ -55,34 +63,37 @@
                 {{ profile.username }}
                 {%- endif ~%}
               </div>
-              {%- else ~%}
-                {%- if profile.url ~%}
+              {%- elseif profile.url|default ~%}
               <div class="url">
                 <a href="{{ profile.url }}">{{ profile.url }}</a>
               </div>
-                {%- endif ~%}
               {%- endif ~%}
             </div>
             {%- endfor ~%}
           </div>
         </div>
       </section>
+      {%- endif ~%}
       {#- works ~#}
+      {%- set works = site.pages.showable|filter_by('section', 'works')|filter(w => w.start is defined) ~%}
+      {%- if works is not empty ~%}
       <section id="work" class="row">
         <aside class="col-sm-3">
           <h3>{% trans %}Work{% endtrans %}</h3>
         </aside>
         <div class="col-sm-9">
           <div class="row">
-            {%- for work in site.pages.showable|filter(page => page.section == 'works')|sort_by_date(variable='date_start') ~%}
+            {%- for work in works|sort_by_date('start') ~%}
             <div class="col-sm-12">
               <h4 class="strike-through">
-                <span><a href="{{ work.url }}">{{ work.company }}</a></span>
+                <span>{% if work.url|default %}<a href="{{ work.url }}">{{ work.company|default(work.title) }}</a>{% else %}{{ work.company|default(work.title) }}{% endif %}</span>
                 <span class="date">{{ work.start|format_date('medium') }} — {% if work.end|default %}{{ work.end|format_date('medium') }}{% else %}{{ 'Present'|trans }}{% endif %}</span>
               </h4>
+              {%- if work.position|default ~%}
               <div class="position">
                 {{ work.position }}
               </div>
+              {%- endif ~%}
               <div class="summary">
                 {{ work.content }}
               </div>
@@ -91,5 +102,6 @@
           </div>
         </div>
       </section>
+      {%- endif ~%}
 
       {%- endblock ~%}
