@@ -148,6 +148,10 @@ h4 span:first-child {
   content: attr(href);
 }
 
+.strike-through span:first-child {
+  display: contents;
+}
+
 @media (min-width: 480px) {
   .strike-through {
     border-top: 1px solid #f4f6f6;
