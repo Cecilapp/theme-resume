@@ -1,7 +1,7 @@
 title: John Doe
-baseline: Programmer
+baseline: Senior Full Stack Developer
 baseurl: /
-description: John Doe, Full Stack Developer Ninja Expert.
+description: John Doe, Senior Full Stack Developer based in Lyon, France. PHP, Symfony, TypeScript and cloud architecture.
 author:
     name: Arnaud Ligny
     url: https://ligny.fr
@@ -10,13 +10,19 @@ theme:
   - resume
 resume:
   contact:
-    email: john@doe.tld
-    phone: +33 0 12 34 56 78
-    website: https://johndoe.tld
+    email: john.doe@example.com
+    phone: +33 1 99 00 12 34
+    website: https://johndoe.example.com
   profiles:
-    - network: Twitter
-      username: johndoe
-      url: https://twitter.com/johndoe
     - network: GitHub
-      username: JohnDoe
-      url: https://github.com/JohnDoe
+      username: johndoe
+      url: https://github.com/johndoe
+    - network: LinkedIn
+      username: john-doe
+      url: https://www.linkedin.com/in/john-doe
+    - network: Mastodon
+      username: '@johndoe@phpc.social'
+      url: https://phpc.social/@johndoe
+    - network: Stack Overflow
+      username: John Doe
+      url: https://stackoverflow.com/users/0000000/john-doe

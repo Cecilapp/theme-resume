@@ -34,32 +34,35 @@ The homepage (`pages/index.md`) content is displayed in the _About_ section.
 
 ```yaml
 title: John Doe
-baseline: Programmer # optional
-description: John Doe, Full Stack Developer Ninja Expert.
+baseline: Senior Full Stack Developer # optional
+description: John Doe, Senior Full Stack Developer based in Lyon, France.
 resume:
   contact: # each entry is optional
-    email: john@doe.tld
-    phone: +33 0 00 00 00 00
-    website: https://johndoe.tld
+    email: john.doe@example.com
+    phone: +33 1 99 00 12 34
+    website: https://johndoe.example.com
   profiles:
     - network: GitHub
-      username: JohnDoe # optional
-      url: https://github.com/JohnDoe # optional
+      username: johndoe # optional
+      url: https://github.com/johndoe # optional
 ```
 
 ### Work experiences
 
-Create _work experiences_ pages in `pages/works/`:
+Create _work experiences_ pages in `pages/works/` (e.g. `pages/works/nimbus-labs.md`):
 
-```yaml
+```markdown
 ---
-company: Company # optional, fallback to title
-position: "Job #1" # optional
-url: https://company.tld # optional
-start: 2015-01-01 # required
-end: 2016-01-01 # optional, "Present" if not set
+company: Nimbus Labs # optional, fallback to title
+position: Senior Full Stack Developer # optional
+url: https://nimbuslabs.example.com # optional
+start: 2018-03-01 # required
+end: 2021-08-31 # optional, "Present" if not set
 ---
-Job description.
+Core developer of a SaaS platform for managing field service teams.
+
+- Built the public REST API and its OpenAPI documentation
+- Moved infrastructure to AWS using Terraform
 ```
 
 See the [`demo`](demo/) folder for a complete example.
