@@ -1,0 +1,10 @@
+{
+    "require": {
+        "cecil/theme-resume": "^1.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "cecil/theme-installer": true
+        }
+    }
+}

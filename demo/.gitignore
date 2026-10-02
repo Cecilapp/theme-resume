@@ -1,0 +1,5 @@
+vendor/
+_site/
+.cache/
+.cecil/
+themes/resume/
